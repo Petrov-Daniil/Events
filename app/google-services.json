@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "501834887092",
+    "project_id": "sibgutiproject",
+    "storage_bucket": "sibgutiproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:501834887092:android:e4e1693c2ff2cb1f144ce1",
+        "android_client_info": {
+          "package_name": "com.test.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "501834887092-jucml7b8mqojet85k9vi04qgmrdvf69h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoFIW0Uiz7J_8CHMFXgM_smmt82OccDgA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "501834887092-jucml7b8mqojet85k9vi04qgmrdvf69h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

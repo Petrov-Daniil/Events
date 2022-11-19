@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:enabled="true"
+        android:icon="?android:attr/actionModeFindDrawable"
+        android:title="@string/home"
+        android:visible="true" />
+    <item
+        android:id="@+id/scheduleFragment"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_menu_today"
+        android:title="@string/schedule"
+        android:visible="true" />
+    <item
+        android:id="@+id/homeEventsFragment"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:title="@string/events"
+        android:visible="true" />
+    <item
+        android:id="@+id/profileFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/profile"
+        android:visible="true" />
+</menu>

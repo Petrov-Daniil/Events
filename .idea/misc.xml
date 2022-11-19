@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/drawable/border_for_avatar.xml" value="0.2265" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/drawable/border_for_buttons.xml" value="0.2265" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/drawable/favorite_button_border_normal.xml" value="0.2265" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/drawable/favorite_button_border_selected.xml" value="0.2265" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/drawable/ic_baseline_favorite_normal.xml" value="0.2265" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/drawable/ic_baseline_favorite_selected.xml" value="0.2265" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/drawable/ic_home.xml" value="0.2265" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2265" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/drawable/ic_my_home.xml" value="0.2265" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/drawable/ic_my_user.xml" value="0.2265" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/drawable/ic_profile.xml" value="0.2265" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/drawable/ic_splashscreen_centered.xml" value="0.2265" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/font/roboto.xml" value="0.284375" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/layout/activity_navigation.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/layout/event_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/layout/event_tab_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/layout/events_fragment.xml" value="0.253125" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/layout/events_tab_fragment.xml" value="0.253125" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/layout/friend_page_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/layout/full_news_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/layout/home_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/layout/item_event_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/layout/item_events_list.xml" value="0.253125" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/layout/item_schedule_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/layout/login_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/layout/profile_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/layout/schedule_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/layout/schedule_tab_fragment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/sibgutiapp/app/src/main/res/menu/bottom_menu.xml" value="0.25416666666666665" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>
