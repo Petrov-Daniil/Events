@@ -46,12 +46,13 @@ class HomeEventsListAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Events) {
             with(binding) {
+                imageviewItemImage.load(data.imageUrl) {
+                    crossfade(true)
+                    println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                }
                 textviewItemDescription.text = data.description
                 textviewItemTitle.text = data.title
                 textviewItemTitle.typeface = Typeface.DEFAULT_BOLD
-                imageviewItemImage.load(data.imageUrl) {
-                    crossfade(true)
-                }
                 textviewItemDate.text = data.date
                 cardviewEventsCard
                     .startAnimation(

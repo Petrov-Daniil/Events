@@ -23,7 +23,7 @@ class EventsRepo(
 
     override suspend fun getEvents(): RequestResult<List<Events>> {
         val json =
-            "{\"id\": 1, \"title\": \"asd\",\"date\": \"02-01-2001\",\"place\": \"SibSUTIS\",\"description\": \"\",\"imageUrl\": \"\"}"
+            "{\"id\": 1, \"title\": \"asd\",\"date\": \"02-01-2001\",\"place\": \"SibSUTIS\",\"description\": \"\",\"imageUrl\": \"https://devby.io/storage/images/59/38/59/11/derived/05ff293929e38a14973ba4cf1c59269d.jpg\"}"
         val result = convert<ApiEvents>(json)
         println(result)
         return if (json.isNotEmpty()) RequestResult.Success(listOf(result?.toEvents() ?: Events(-1, "", "", "", "", "")))
