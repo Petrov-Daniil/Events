@@ -53,7 +53,6 @@ class HomeNewsListAdapter :
                 imageviewItemImage.load(data.imageUrl) {
                     crossfade(true)
                 }
-                textviewItemAuthor.text = data.author?.fullName ?: ""
                 textviewItemDate.text = data.dateTime
                 cardviewNewsCard
                     .startAnimation(

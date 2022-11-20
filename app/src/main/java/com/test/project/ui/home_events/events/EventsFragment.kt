@@ -55,24 +55,6 @@ class EventsFragment : Fragment(R.layout.events_fragment) {
                 textviewItemDescription.movementMethod = ScrollingMovementMethod()
                 imageviewItemImage.load(imageUrl)
             }
-            with(recyclerviewEvents) {
-                adapter = adapterEventsList
-                layoutManager = LinearLayoutManager(
-                    requireContext(),
-                    LinearLayoutManager.HORIZONTAL,
-                    false)
-                adapterEventsList.setOnItemClickListener(object :
-                    EventsListAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val bundle = Bundle()
-                        bundle.putInt("position", position)
-                        findNavController().navigate(
-                            R.id.action_eventsFragment_self,
-                            bundle
-                        )
-                    }
-                })
-            }
         }
     }
 }
