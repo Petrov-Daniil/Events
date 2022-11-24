@@ -10,7 +10,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:cardElevation="4dp"
-    android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
+    android:theme="@style/ThemeSibgutiEvents"
     app:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout

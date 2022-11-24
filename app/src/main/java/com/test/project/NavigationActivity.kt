@@ -14,9 +14,9 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.test.project.databinding.ActivityNavigationBinding
-import com.test.project.ui.home_events.events.EventsFragment
 import com.test.project.ui.home.HomeFragment
 import com.test.project.ui.home.fullnews.FullNewsFragment
+import com.test.project.ui.home_events.events.EventsFragment
 import com.test.project.ui.login.LoginFragment
 import com.test.project.ui.profile.ProfileFragment
 import com.test.project.ui.schedule.ScheduleFragment
@@ -43,6 +43,7 @@ class NavigationActivity : AppCompatActivity() {
                 R.id.homeEventsFragment
             )
         )
+        setSupportActionBar(findViewById(R.id.tool_bar))
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.bottomNavigationMenu.setupWithNavController(navController)
     }

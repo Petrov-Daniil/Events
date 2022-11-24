@@ -12,4 +12,5 @@
     <color name="navy_blue">#1A31AC</color>
     <color name="default_text_color">#4A4A4A</color>
     <color name="dark_blue">#25438F</color>
+    <color name="light_gray">#E9ECEB</color>
 </resources>

@@ -38,8 +38,14 @@ class FullNewsFragment : Fragment(R.layout.full_news_fragment) {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED)
             {
                 launch {
-                    model.newsStateFlow.collect {
-                        adapterFullNewsList.setUpdatedData(it)
+                    model.newsStateFlow.collect { list ->
+                        val newsList: MutableList<News> = mutableListOf()
+                        for (i in list.indices) {
+                            if (i != newsIndex){
+                                newsList.add(list[i])
+                            }
+                        }
+                        adapterFullNewsList.setUpdatedData(newsList)
                     }
                 }
             }

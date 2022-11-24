@@ -54,14 +54,6 @@ class HomeEventsListAdapter :
                 textviewItemTitle.text = data.title
                 textviewItemTitle.typeface = Typeface.DEFAULT_BOLD
                 textviewItemDate.text = data.date
-                cardviewEventsCard
-                    .startAnimation(
-                        AnimationUtils
-                            .loadAnimation(
-                                itemView.context,
-                                R.anim.animation_recyclerview
-                            )
-                    )
 
 //                if (favoriteEvents.contains(data.id)) {
 //                    addToFavoriteButton.setImageResource(R.drawable.ic_baseline_favorite_selected)

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -22,8 +21,10 @@
 
         <ImageView
             android:id="@+id/imageview_item_image"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
             android:layout_marginTop="4dp"
             app:layout_constraintEnd_toEndOf="@+id/textview_item_description"
             app:layout_constraintStart_toStartOf="@+id/textview_item_description"
