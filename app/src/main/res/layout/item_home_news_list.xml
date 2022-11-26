@@ -8,8 +8,12 @@
     android:layout_marginTop="0dp"
     android:layout_marginBottom="8dp"
     android:theme="@style/ThemeSibgutiEvents"
+    style="?attr/materialCardViewElevatedStyle"
     app:cardCornerRadius="15dp"
-    app:cardElevation="0dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true"
+    android:background="@color/white"
+    app:cardBackgroundColor="@color/white"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
@@ -51,10 +55,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
+            android:gravity="center"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:text="@string/title"
-            android:gravity="center"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -65,10 +69,10 @@
             android:id="@+id/textview_item_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:fontFamily="sans-serif"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:layout_marginTop="16dp"
             android:text="@string/description"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,22 +82,22 @@
             android:id="@+id/add_to_favorite"
             android:layout_width="80dp"
             android:layout_height="40dp"
-            android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
             android:background="@drawable/favorite_button_border_normal"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageview_item_image">
 
             <ImageButton
-                android:background="@color/light_gray"
                 android:id="@+id/add_to_favorite_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/light_gray"
+                android:src="@drawable/ic_baseline_favorite_normal"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/ic_baseline_favorite_normal" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
