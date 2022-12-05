@@ -13,7 +13,6 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -36,8 +35,8 @@
             android:id="@+id/date_layout"
             android:layout_width="124dp"
             android:layout_height="40dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/favorite_button_border_normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageview_item_image">
@@ -46,13 +45,13 @@
                 android:id="@+id/date_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/md_theme_light_surface"
                 android:layout_marginStart="8dp"
+                android:background="@color/md_theme_light_surface"
                 android:src="@drawable/calendar_month"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/textview_item_date"/>
+                app:layout_constraintRight_toLeftOf="@+id/textview_item_date"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textview_item_date"
@@ -63,10 +62,10 @@
                 android:paddingEnd="8dp"
                 android:text="@string/date"
                 android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/date_icon"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/date_icon"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -97,12 +96,13 @@
             app:layout_constraintTop_toBottomOf="@+id/textview_item_title" />
 
         <com.google.android.material.button.MaterialButton
+            style="?attr/materialIconButtonFilledStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@drawable/ic_search"
-            style="?attr/materialIconButtonFilledStyle"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/add_to_favorite"
             android:layout_width="80dp"
