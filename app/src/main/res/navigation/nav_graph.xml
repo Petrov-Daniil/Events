@@ -11,7 +11,9 @@
         tools:layout="@layout/home_fragment">
         <action
             android:id="@+id/action_homeFragment_to_fullNewsFragment"
-            app:destination="@id/fullNewsFragment" />
+            app:destination="@id/fullNewsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:popEnterAnim="@android:anim/slide_in_left"/>
     </fragment>
     <fragment
         android:id="@+id/homeEventsFragment"
@@ -20,7 +22,9 @@
         tools:layout="@layout/home_events_fragment">
         <action
             android:id="@+id/action_homeEventsFragment_to_eventsFragment"
-            app:destination="@id/eventsFragment" />
+            app:destination="@id/eventsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:popEnterAnim="@android:anim/slide_in_left"/>
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -40,11 +44,13 @@
         tools:layout="@layout/full_news_fragment">
         <argument
             android:name="@string/position"
-            android:defaultValue="-1" />
+            android:defaultValue="-1"/>
         <action
             android:id="@+id/action_fullNewsFragment_self"
             app:destination="@id/fullNewsFragment"
-            app:popUpTo="@id/homeFragment" />
+            app:popUpTo="@id/homeFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:popEnterAnim="@android:anim/slide_in_left"/>
     </fragment>
     <fragment
         android:id="@+id/eventsFragment"
@@ -57,8 +63,9 @@
         <action
             android:id="@+id/action_eventsFragment_self"
             app:destination="@id/eventsFragment"
+            app:popUpTo="@id/homeEventsFragment"
             app:enterAnim="@android:anim/slide_in_left"
-            app:popUpTo="@id/homeEventsFragment" />
+            app:popEnterAnim="@android:anim/slide_in_left"/>
     </fragment>
     <fragment
         android:id="@+id/scheduleFragment"

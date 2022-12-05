@@ -23,12 +23,15 @@
     <string name="time">00:00</string>
     <string name="classroom">000(К.0)</string>
     <string name="password">Пароль</string>
+    <string name="edit">Исправить</string>
     <string name="favorite">В избранное</string>
+    <string name="more">Дополнительно</string>
     <string name="send_message">Написать сообщение</string>
     <string name="delete_friend">Удалить из друзей</string>
     <string name="call">Позвонить</string>
     <string name="register">Регистрация</string>
     <string name="events">Мероприятия</string>
     <string name="title">Title</string>
-    <string name="SERVER_CLIENT_ID">501834887092-jucml7b8mqojet85k9vi04qgmrdvf69h.apps.googleusercontent.com</string>
+    <string name="search">Поиск</string>
+    <string name="SERVER_CLIENT_ID">466832646278-7865bn806cdge82d8blur9hl03tm7cgt.apps.googleusercontent.com</string>
 </resources>

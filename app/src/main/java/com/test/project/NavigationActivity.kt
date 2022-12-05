@@ -3,7 +3,6 @@ package com.test.project
 import android.os.Bundle
 import android.view.View
 import android.viewbinding.library.activity.viewBinding
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
@@ -44,8 +43,6 @@ class NavigationActivity : AppCompatActivity() {
                 R.id.homeEventsFragment
             )
         )
-        setSupportActionBar(findViewById(R.id.tool_bar))
-        setupActionBarWithNavController(navController, appBarConfiguration)
         binding.bottomNavigationMenu.setupWithNavController(navController)
     }
 

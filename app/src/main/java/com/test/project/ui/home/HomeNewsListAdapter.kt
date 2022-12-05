@@ -4,18 +4,10 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.text.SpannableString
 import android.text.Spanned
-import android.text.method.LinkMovementMethod
-import android.text.style.BackgroundColorSpan
-import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -94,16 +86,16 @@ class HomeNewsListAdapter :
                 }
             }
             itemView.setOnClickListener { listener.onItemClick(adapterPosition) }
-//            binding.addToFavorite.setOnClickListener {
-//                listener.onAddToFavoriteButtonClick(data.id)
-//                onFavoriteButtonClick(binding, data.id)
-//            }
-            binding.addToFavoriteButton.setOnClickListener {
-                onFavoriteButtonClick(
-                    binding,
-                    data.id
-                )
+            binding.addToFavorite.setOnClickListener {
+                listener.onAddToFavoriteButtonClick(data.id)
+                onFavoriteButtonClick(binding, data.id)
             }
+//            binding.addToFavoriteButton.setOnClickListener {
+//                onFavoriteButtonClick(
+//                    binding,
+//                    data.id
+//                )
+//            }
         }
     }
 

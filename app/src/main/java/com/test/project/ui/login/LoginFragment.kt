@@ -31,6 +31,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
         super.onCreate(savedInstanceState)
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             val account = GoogleSignIn.getSignedInAccountFromIntent(it.data).result
+            println(account)
             account?.let {
                 firebaseAuthWithGoogle(account.idToken.toString())
             }
@@ -58,7 +59,6 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
                     register()
                 }
                 stateListAnimator = null
-                setBackgroundColor(requireContext().getColor(R.color.white))
             }
         }
     }
@@ -70,6 +70,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
             auth = FirebaseAuth.getInstance()
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 auth.signInWithEmailAndPassword(email, password)
+//                    auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener {
                         handleAuthResult(it)
                     }
@@ -88,10 +89,12 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
 
     private fun firebaseAuthWithGoogle(idToken: String) {
         auth = FirebaseAuth.getInstance()
+        println(idToken)
         auth.signInWithCredential(GoogleAuthProvider.getCredential(idToken, null))
             .addOnCompleteListener {
                 handleAuthResult(it)
             }
+        println(123)
     }
 
     private fun signInWithGoogle() {

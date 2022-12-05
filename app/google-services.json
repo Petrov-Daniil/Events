@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "501834887092",
-    "project_id": "sibgutiproject",
-    "storage_bucket": "sibgutiproject.appspot.com"
+    "project_number": "466832646278",
+    "project_id": "sibevents",
+    "storage_bucket": "sibevents.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:501834887092:android:e4e1693c2ff2cb1f144ce1",
+        "mobilesdk_app_id": "1:466832646278:android:65eb5bde8b8fed08e67107",
         "android_client_info": {
           "package_name": "com.test.project"
         }
       },
       "oauth_client": [
         {
-          "client_id": "501834887092-jucml7b8mqojet85k9vi04qgmrdvf69h.apps.googleusercontent.com",
+          "client_id": "466832646278-7865bn806cdge82d8blur9hl03tm7cgt.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDoFIW0Uiz7J_8CHMFXgM_smmt82OccDgA"
+          "current_key": "AIzaSyB9A7RYHpHcDYVVeKDW2neUu3kg5roM00c"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "501834887092-jucml7b8mqojet85k9vi04qgmrdvf69h.apps.googleusercontent.com",
+              "client_id": "466832646278-7865bn806cdge82d8blur9hl03tm7cgt.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

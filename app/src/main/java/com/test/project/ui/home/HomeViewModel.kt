@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 class HomeViewModel(
     private val newsRepo: INewsRepo,
 ) : ViewModel() {
-
+    private val newsList = mutableListOf<News>()
     private val _newsState = MutableStateFlow<List<News>?>(null)
     val newsStateFlow = _newsState.asStateFlow().filterNotNull()
 
@@ -34,6 +34,8 @@ class HomeViewModel(
         viewModelScope.launch {
             when (val result = newsRepo.getNews()) {
                 is RequestResult.Success -> {
+                    newsList.clear()
+                    newsList.addAll(result.data)
                     _newsState.emit(result.data)
                 }
                 is RequestResult.Error -> {
@@ -52,6 +54,8 @@ class HomeViewModel(
 
     private fun getNewsFromDatabase() {
         viewModelScope.launch {
+            newsList.clear()
+            newsList.addAll(newsRepo.getNewsFromDatabase())
             _newsState.emit(newsRepo.getNewsFromDatabase())
         }
     }
@@ -66,5 +70,9 @@ class HomeViewModel(
         viewModelScope.launch {
             newsRepo.deleteFromFavoriteById(favoriteNews.id)
         }
+    }
+
+    fun searchNews(search: String) {
+        _newsState.value = newsList.filter { it.title?.contains(search, true) ?: false }
     }
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -14,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.test.project.R
 import com.test.project.data.remote.entity.FavoriteNews
 import com.test.project.databinding.HomeFragmentBinding
-import com.test.project.ui.home_events.HomeEventsViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -53,6 +53,27 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     private fun bindUi() {
         with(viewBinding) {
+            toolBar.inflateMenu(R.menu.home_menu)
+            toolBar.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.edit -> {
+                        if (searchInput.visibility == View.VISIBLE) {
+                            searchInput.visibility = View.GONE
+                        } else {
+                            searchInput.visibility = View.VISIBLE
+                        }
+                        true
+                    }
+                    R.id.favorite -> {
+                        // Save profile changes
+                        true
+                    }
+                    else -> false
+                }
+            }
+            searchInput.addTextChangedListener {
+                model.searchNews(it.toString())
+            }
             with(recyclerViewHomeList) {
                 adapter = adapterNews
                 layoutManager = LinearLayoutManager(requireContext())
@@ -81,6 +102,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
             }
             swipeRefreshHome.setOnRefreshListener {
                 model.getNews()
+                model.searchNews(searchInput.text.toString())
                 swipeRefreshHome.isRefreshing = false
             }
         }

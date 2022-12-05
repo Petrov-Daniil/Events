@@ -36,6 +36,7 @@ class HomeEventsFragment : Fragment(R.layout.home_events_fragment) {
                 }
             }
         }
+        viewBinding.toolBar.inflateMenu(R.menu.home_menu)
         bindUi()
     }
 

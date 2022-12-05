@@ -38,14 +38,8 @@ class FullNewsFragment : Fragment(R.layout.full_news_fragment) {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED)
             {
                 launch {
-                    model.newsStateFlow.collect { list ->
-                        val newsList: MutableList<News> = mutableListOf()
-                        for (i in list.indices) {
-                            if (i != newsIndex){
-                                newsList.add(list[i])
-                            }
-                        }
-                        adapterFullNewsList.setUpdatedData(newsList)
+                    model.newsStateFlow.collect {
+                        adapterFullNewsList.setUpdatedData(it)
                     }
                 }
             }
@@ -69,9 +63,8 @@ class FullNewsFragment : Fragment(R.layout.full_news_fragment) {
             with(recyclerviewFullNews) {
                 adapter = adapterFullNewsList
                 layoutManager = LinearLayoutManager(
-                    requireContext(),
-                    LinearLayoutManager.HORIZONTAL,
-                    false)
+                    requireContext(), LinearLayoutManager.HORIZONTAL, false
+                )
                 adapterFullNewsList.setOnItemClickListener(object :
                     FullNewsListAdapter.OnItemClickListener {
                     override fun onItemClick(position: Int) {
