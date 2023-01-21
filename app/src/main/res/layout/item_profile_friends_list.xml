@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     app:strokeColor="@color/gray"
     app:strokeWidth="0.05dp"
-    android:theme="@style/ThemeSibgutiEvents"
+    android:theme="@style/Theme.Events"
     android:id="@+id/cardview_friends_card">
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -26,7 +26,7 @@ interface ISibgutiHerokuService {
     suspend fun getSchedule(): List<List<ApiLesson>>
 
     @GET("events/last")
-    suspend fun getEvents(): List<ApiEvents>
+    suspend fun getEvents(): List<ApiEvent>
 
     @GET("profile/{id}")
     suspend fun getProfileById(@Path("id") id: Int): ApiUser

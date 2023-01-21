@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.test.project.ui.home.HomeFragment"
@@ -17,9 +17,9 @@
     </fragment>
     <fragment
         android:id="@+id/homeEventsFragment"
-        android:name="com.test.project.ui.home_events.HomeEventsFragment"
+        android:name="com.test.project.ui.home_events.HomeEventFragment"
         android:label="Мероприятия"
-        tools:layout="@layout/home_events_fragment">
+        tools:layout="@layout/home_event_fragment">
         <action
             android:id="@+id/action_homeEventsFragment_to_eventsFragment"
             app:destination="@id/eventsFragment"
@@ -54,9 +54,9 @@
     </fragment>
     <fragment
         android:id="@+id/eventsFragment"
-        android:name="com.test.project.ui.home_events.events.EventsFragment"
+        android:name="com.test.project.ui.home_events.events.EventFragment"
         android:label="Мероприятия"
-        tools:layout="@layout/events_fragment">
+        tools:layout="@layout/event_fragment">
         <argument
             android:name="@string/position"
             android:defaultValue="-1" />

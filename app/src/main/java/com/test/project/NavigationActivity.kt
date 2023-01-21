@@ -11,12 +11,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.test.project.databinding.ActivityNavigationBinding
 import com.test.project.ui.home.HomeFragment
 import com.test.project.ui.home.fullnews.FullNewsFragment
-import com.test.project.ui.home_events.events.EventsFragment
+import com.test.project.ui.home_events.events.EventFragment
 import com.test.project.ui.login.LoginFragment
 import com.test.project.ui.profile.ProfileFragment
 import com.test.project.ui.schedule.ScheduleFragment
@@ -44,6 +43,20 @@ class NavigationActivity : AppCompatActivity() {
             )
         )
         binding.bottomNavigationMenu.setupWithNavController(navController)
+        binding.bottomNavigationMenu.setOnItemReselectedListener {
+            when(it.itemId){
+                R.id.homeFragment -> {
+                    val bundle = Bundle()
+                    bundle.putInt("position", 1)
+                    navController.navigate(R.id.homeFragment, bundle)
+                }
+                R.id.homeEventsFragment -> {
+                    val bundle = Bundle()
+                    bundle.putInt("position", 1)
+                    navController.navigate(R.id.homeEventsFragment, bundle)
+                }
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -71,7 +84,7 @@ class NavigationActivity : AppCompatActivity() {
                     }
                     is HomeFragment,
                     is ScheduleFragment,
-                    is EventsFragment,
+                    is EventFragment,
                     is ProfileFragment -> {
                         showAppBar()
                         showBottomNavigationMenu()

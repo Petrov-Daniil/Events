@@ -33,5 +33,7 @@
     <string name="events">Мероприятия</string>
     <string name="title">Title</string>
     <string name="search">Поиск</string>
-    <string name="SERVER_CLIENT_ID">466832646278-7865bn806cdge82d8blur9hl03tm7cgt.apps.googleusercontent.com</string>
+    <string name="edit_post">Редактировать</string>\
+    <string name="delete_post">Удалить</string>
+    <string name="SERVER_CLIENT_ID">49355483592-4qoc0itbc2qbot3jk12g83kel99oqntt.apps.googleusercontent.com</string>
 </resources>

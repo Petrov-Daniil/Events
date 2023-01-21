@@ -2,6 +2,8 @@ package com.test.project.ui.home.fullnews
 
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.viewbinding.library.fragment.viewBinding
 import androidx.fragment.app.Fragment
@@ -46,8 +48,16 @@ class FullNewsFragment : Fragment(R.layout.full_news_fragment) {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
     private fun bindUi(news: News) {
         with(binding) {
+            toolBar.inflateMenu(R.menu.full_news_menu)
+            toolBar.setNavigationOnClickListener {
+                findNavController().navigateUp()
+            }
             with(news) {
                 textviewItemTitle.text = title
                 textviewItemTitle.typeface = android.graphics.Typeface.DEFAULT_BOLD

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "49355483592",
+    "project_id": "sibevent-51cdb",
+    "storage_bucket": "sibevent-51cdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49355483592:android:919d9ef24215b3d48d78fd",
+        "android_client_info": {
+          "package_name": "com.test.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49355483592-t3u9b3rh3fb6da5h4tmm3l0ge96qk4j7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.test.project",
+            "certificate_hash": "1491bdfbe7409be999b64a7696896c44cbe9d086"
+          }
+        },
+        {
+          "client_id": "49355483592-4qoc0itbc2qbot3jk12g83kel99oqntt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuXIlkkHwd1SHMmUEX9eT9-9BNkMhrkks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "49355483592-4qoc0itbc2qbot3jk12g83kel99oqntt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -38,7 +38,6 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
                 }
                 launch {
                     model.friendsListFlow.collect {
-//                        adapterProfileRecyclerViewFriendsList.setUpdatedData(it)
                     }
                 }
             }
@@ -61,25 +60,6 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
 
     private fun bindUi(context: Context) {
         with(viewBinding) {
-            with(recyclerviewProfileFriendsList) {
-                adapter = adapterProfileRecyclerViewFriendsList
-                val managerRecyclerViewFriendsListAdapter = LinearLayoutManager(context)
-                layoutManager = managerRecyclerViewFriendsListAdapter
-                setHasFixedSize(true)
-
-                adapterProfileRecyclerViewFriendsList.setOnItemClickListener(object :
-                ProfileRecyclerViewFriendsListAdapter.OnItemClickListener {
-                    override fun onItemClick(position: Int) {
-                        val bundle = Bundle()
-                        bundle.putInt("friend_id", position)
-                        findNavController().navigate(
-                            R.id.action_profileFragment_to_friendPageFragment,
-                            bundle
-                        )
-                    }
-
-                })
-            }
         }
     }
 

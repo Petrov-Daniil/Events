@@ -73,6 +73,6 @@ class HomeViewModel(
     }
 
     fun searchNews(search: String) {
-        _newsState.value = newsList.filter { it.title?.contains(search, true) ?: false }
+        _newsState.value = newsList.filter { it.title?.startsWith(search, true) ?: false }
     }
 }

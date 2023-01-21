@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        tools:replace="android:theme"
         android:name=".App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,13 +14,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/ThemeAppStarting"
-        tools:targetApi="31">
+        android:theme="@style/Theme.App.Starting"
+        tools:targetApi="33">
         <activity
             android:name=".NavigationActivity"
             android:exported="true"
             android:windowSoftInputMode="stateVisible|adjustResize"
-            android:theme="@style/ThemeAppStarting">
+            android:theme="@style/Theme.App.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

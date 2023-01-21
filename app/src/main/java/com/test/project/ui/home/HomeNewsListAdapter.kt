@@ -7,11 +7,9 @@ import android.text.Spanned
 import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.test.project.R
 import com.test.project.databinding.ItemHomeNewsListBinding
 import com.test.project.domain.entity.News
 
@@ -52,8 +50,8 @@ class HomeNewsListAdapter :
         fun bind(data: News) {
             with(binding) {
                 data.description?.let {
-                    val maxTextLength: Int = 200
-                    val readMoreString: String = "...Показать ещё"
+                    val maxTextLength = 200
+                    val readMoreString = "...Показать ещё"
                     if (it.length < maxTextLength) {
                         textviewItemDescription.text = it
                     } else {
@@ -75,44 +73,16 @@ class HomeNewsListAdapter :
                     crossfade(true)
                 }
                 textviewItemDate.text = data.dateTime
-                //тут анимация загрузки
-
                 if (favoriteNews.contains(data.id)) {
-                    addToFavoriteButton.setImageResource(R.drawable.ic_baseline_favorite_selected)
-                    addToFavorite.background = AppCompatResources.getDrawable(
-                        binding.root.context,
-                        R.drawable.favorite_button_border_selected
-                    )
+                    addToFavorite.isChecked = true
                 }
             }
             itemView.setOnClickListener { listener.onItemClick(adapterPosition) }
-            binding.addToFavorite.setOnClickListener {
-                listener.onAddToFavoriteButtonClick(data.id)
-                onFavoriteButtonClick(binding, data.id)
-            }
-//            binding.addToFavoriteButton.setOnClickListener {
-//                onFavoriteButtonClick(
-//                    binding,
-//                    data.id
-//                )
-//            }
-        }
-    }
-
-    private fun onFavoriteButtonClick(binding: ItemHomeNewsListBinding, id: Int) {
-        with(binding) {
-            if (!favoriteNews.contains(id)) {
-                addToFavoriteButton.setImageResource(R.drawable.ic_baseline_favorite_selected)
-                addToFavorite.background = AppCompatResources.getDrawable(
-                    binding.root.context,
-                    R.drawable.favorite_button_border_selected
-                )
-            } else {
-                addToFavoriteButton.setImageResource(R.drawable.ic_baseline_favorite_normal)
-                addToFavorite.background = AppCompatResources.getDrawable(
-                    binding.root.context,
-                    R.drawable.favorite_button_border_normal
-                )
+            binding.addToFavorite.setOnCheckedChangeListener { checkBox, isChecked ->
+                checkBox.isChecked = isChecked
+                checkBox.setOnClickListener {
+                    listener.onAddToFavoriteButtonClick(data.id)
+                }
             }
         }
     }
@@ -129,6 +99,7 @@ class HomeNewsListAdapter :
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.bind(dataList[position])
+        println(position)
     }
 
     override fun getItemCount() = dataList.size
