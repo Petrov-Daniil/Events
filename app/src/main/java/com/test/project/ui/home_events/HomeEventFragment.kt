@@ -51,6 +51,17 @@ class HomeEventFragment : Fragment(R.layout.home_event_fragment) {
     private fun bindUi() {
         with(viewBinding) {
             toolBar.inflateMenu(R.menu.home_event_menu)
+            toolBar.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.add_event -> {
+                        findNavController().navigate(
+                            R.id.action_homeEventsFragment_to_addEventFragment
+                        )
+                        true
+                    }
+                    else -> false
+                }
+            }
             val searchView = toolBar.menu.findItem(R.id.search_event).actionView as SearchView
             searchView.queryHint = "Поиск..."
             with(recyclerViewHomeEventList) {
@@ -74,7 +85,7 @@ class HomeEventFragment : Fragment(R.layout.home_event_fragment) {
                         val bundle = Bundle()
                         bundle.putInt("position", position)
                         findNavController().navigate(
-                            R.id.action_homeEventsFragment_to_eventsFragment,
+                            R.id.action_homeEventsFragment_to_fullEventFragment,
                             bundle
                         )
                     }

@@ -14,8 +14,10 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.test.project.databinding.ActivityNavigationBinding
 import com.test.project.ui.home.HomeFragment
-import com.test.project.ui.home.fullnews.FullNewsFragment
-import com.test.project.ui.home_events.events.EventFragment
+import com.test.project.ui.home.full_news.FullNewsFragment
+import com.test.project.ui.home_events.HomeEventFragment
+import com.test.project.ui.home_events.add_event.AddEventFragment
+import com.test.project.ui.home_events.full_event.FullEventFragment
 import com.test.project.ui.login.LoginFragment
 import com.test.project.ui.profile.ProfileFragment
 import com.test.project.ui.schedule.ScheduleFragment
@@ -39,21 +41,21 @@ class NavigationActivity : AppCompatActivity() {
                 R.id.homeFragment,
                 R.id.profileFragment,
                 R.id.scheduleFragment,
-                R.id.homeEventsFragment
+                R.id.homeEventFragment
             )
         )
         binding.bottomNavigationMenu.setupWithNavController(navController)
         binding.bottomNavigationMenu.setOnItemReselectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.homeFragment -> {
                     val bundle = Bundle()
                     bundle.putInt("position", 1)
                     navController.navigate(R.id.homeFragment, bundle)
                 }
-                R.id.homeEventsFragment -> {
+                R.id.homeEventFragment -> {
                     val bundle = Bundle()
                     bundle.putInt("position", 1)
-                    navController.navigate(R.id.homeEventsFragment, bundle)
+                    navController.navigate(R.id.homeEventFragment, bundle)
                 }
             }
         }
@@ -82,9 +84,15 @@ class NavigationActivity : AppCompatActivity() {
                         hideAppBar()
                         hideBottomNavigationMenu()
                     }
+                    is FullEventFragment -> {
+                        hideBottomNavigationMenu()
+                    }
+                    is AddEventFragment -> {
+                        hideBottomNavigationMenu()
+                    }
                     is HomeFragment,
+                    is HomeEventFragment,
                     is ScheduleFragment,
-                    is EventFragment,
                     is ProfileFragment -> {
                         showAppBar()
                         showBottomNavigationMenu()

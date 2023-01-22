@@ -9,7 +9,7 @@
         android:title="@string/home"
         android:visible="true" />
     <item
-        android:id="@+id/homeEventsFragment"
+        android:id="@+id/homeEventFragment"
         android:enabled="true"
         android:icon="@drawable/ic_event"
         android:title="@string/events"

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.test.project.ui.home.HomeFragment"
@@ -13,24 +13,34 @@
             android:id="@+id/action_homeFragment_to_fullNewsFragment"
             app:destination="@id/fullNewsFragment"
             app:enterAnim="@android:anim/slide_in_left"
-            app:popEnterAnim="@android:anim/slide_in_left"/>
+            app:popEnterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
-        android:id="@+id/homeEventsFragment"
+        android:id="@+id/homeEventFragment"
         android:name="com.test.project.ui.home_events.HomeEventFragment"
         android:label="Мероприятия"
         tools:layout="@layout/home_event_fragment">
         <action
-            android:id="@+id/action_homeEventsFragment_to_eventsFragment"
-            app:destination="@id/eventsFragment"
+            android:id="@+id/action_homeEventsFragment_to_fullEventFragment"
+            app:destination="@id/fullEventFragment"
             app:enterAnim="@android:anim/slide_in_left"
-            app:popEnterAnim="@android:anim/slide_in_left"/>
+            app:popEnterAnim="@android:anim/slide_in_left" />
+        <action
+            android:id="@+id/action_homeEventsFragment_to_addEventFragment"
+            app:destination="@+id/addEventFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:popEnterAnim="@android:anim/slide_in_left" />
     </fragment>
+    <fragment
+        android:id="@+id/addEventFragment"
+        android:name="com.test.project.ui.home_events.add_event.AddEventFragment"
+        android:label="Мероприятия"
+        tools:layout="@layout/add_event_fragment" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.test.project.ui.profile.ProfileFragment"
         android:label="Профиль"
-        tools:layout="@layout/profile_fragment" >
+        tools:layout="@layout/profile_fragment">
         <action
             android:id="@+id/action_profileFragment_to_friendPageFragment"
             app:destination="@id/friendPageFragment"
@@ -39,33 +49,33 @@
     </fragment>
     <fragment
         android:id="@+id/fullNewsFragment"
-        android:name="com.test.project.ui.home.fullnews.FullNewsFragment"
+        android:name="com.test.project.ui.home.full_news.FullNewsFragment"
         android:label="Новости"
         tools:layout="@layout/full_news_fragment">
         <argument
             android:name="@string/position"
-            android:defaultValue="-1"/>
+            android:defaultValue="-1" />
         <action
             android:id="@+id/action_fullNewsFragment_self"
             app:destination="@id/fullNewsFragment"
-            app:popUpTo="@id/homeFragment"
             app:enterAnim="@android:anim/slide_in_left"
-            app:popEnterAnim="@android:anim/slide_in_left"/>
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/eventsFragment"
-        android:name="com.test.project.ui.home_events.events.EventFragment"
+        android:id="@+id/fullEventFragment"
+        android:name="com.test.project.ui.home_events.full_event.FullEventFragment"
         android:label="Мероприятия"
-        tools:layout="@layout/event_fragment">
+        tools:layout="@layout/full_event_fragment">
         <argument
             android:name="@string/position"
             android:defaultValue="-1" />
         <action
-            android:id="@+id/action_eventsFragment_self"
-            app:destination="@id/eventsFragment"
-            app:popUpTo="@id/homeEventsFragment"
+            android:id="@+id/action_fullEventFragment_self"
+            app:destination="@id/fullEventFragment"
             app:enterAnim="@android:anim/slide_in_left"
-            app:popEnterAnim="@android:anim/slide_in_left"/>
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popUpTo="@id/homeEventFragment" />
     </fragment>
     <fragment
         android:id="@+id/scheduleFragment"
@@ -80,7 +90,6 @@
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_in_left"
             app:popUpTo="@+id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
