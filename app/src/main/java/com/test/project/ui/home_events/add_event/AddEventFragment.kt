@@ -1,21 +1,22 @@
 package com.test.project.ui.home_events.add_event
 
-import com.test.project.domain.entity.Event
 import android.os.Bundle
 import android.view.View
 import android.viewbinding.library.fragment.viewBinding
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.test.project.R
 import com.test.project.databinding.AddEventFragmentBinding
+import com.test.project.domain.entity.Event
+
 
 class AddEventFragment : Fragment(R.layout.add_event_fragment) {
 
     private val viewBinding: AddEventFragmentBinding by viewBinding()
-    private val dataBase: DatabaseReference = FirebaseDatabase.getInstance().getReference("Events")
+    private val dataBase: DatabaseReference = FirebaseDatabase.getInstance().getReference("events")
+    private val eventsRef: DatabaseReference = dataBase.child("events")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -23,6 +24,23 @@ class AddEventFragment : Fragment(R.layout.add_event_fragment) {
     }
 
     private fun bindUi() {
+        dataBase.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (child in snapshot.children) {
+                    val id = child.key
+                    val title = child.child("title").value.toString()
+                    val date = child.child("date").value.toString()
+                    val place = child.child("place").value.toString()
+                    val description = child.child("description").value.toString()
+                    val imageUrl = child.child("imageUrl").value.toString()
+                    println("id: $id, title: $title, date: $date, place: $place, description: $description, imageUrl: $imageUrl")
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
         with(viewBinding) {
             toolBar.inflateMenu(R.menu.add_event_menu)
             toolBar.setNavigationOnClickListener {
@@ -33,11 +51,11 @@ class AddEventFragment : Fragment(R.layout.add_event_fragment) {
             val place = textInputEdittextPlace.text
             val description = textInputEdittextDescription.text
             val imageUrl = textInputEdittextImage.text
+            var count = 0
             buttonAddEvent.setOnClickListener {
-                val id = dataBase.get()
-                println(id)
+
                 val newEvent = Event(
-                    id,
+                    count++,
                     title.toString(),
                     date.toString(),
                     place.toString(),

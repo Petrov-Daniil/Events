@@ -52,52 +52,10 @@ class HomeEventListAdapter :
                 textviewItemTitle.text = data.title
                 textviewItemTitle.typeface = Typeface.DEFAULT_BOLD
                 textviewItemDate.text = data.date
-
-//                if (favoriteEvents.contains(data.id)) {
-//                    addToFavoriteButton.setImageResource(R.drawable.ic_baseline_favorite_selected)
-//                    addToFavorite.background = AppCompatResources.getDrawable(
-//                        binding.root.context,
-//                        R.drawable.favorite_button_border_selected
-//                    )
-//                    addToFavoriteTextview.setTextColor(addToFavorite.context.getColor(R.color.navy_blue))
-//                    addToFavoriteTextview.text = "Добавлено"
-//                }
             }
             itemView.setOnClickListener { listener.onItemClick(adapterPosition) }
-//            binding.addToFavorite.setOnClickListener {
-//                listener.onAddToFavoriteButtonClick(data.id)
-//                onFavoriteButtonClick(binding, data.id)
-//            }
-//            binding.addToFavoriteButton.setOnClickListener {
-//                onFavoriteButtonClick(
-//                    binding,
-//                    data.id
-//                )
-//            }
         }
     }
-
-//    private fun onFavoriteButtonClick(binding: ItemHomeEventsListBinding, id: Int) {
-//        with(binding) {
-//            if (!favoriteEvents.contains(id)) {
-//                addToFavoriteButton.setImageResource(R.drawable.ic_baseline_favorite_selected)
-//                addToFavorite.background = AppCompatResources.getDrawable(
-//                    binding.root.context,
-//                    R.drawable.favorite_button_border_selected
-//                )
-//                addToFavoriteTextview.setTextColor(addToFavorite.context.getColor(R.color.navy_blue))
-//                addToFavoriteTextview.text = "Добавлено"
-//            } else {
-//                addToFavoriteButton.setImageResource(R.drawable.ic_baseline_favorite_normal)
-//                addToFavorite.background = AppCompatResources.getDrawable(
-//                    binding.root.context,
-//                    R.drawable.favorite_button_border_normal
-//                )
-//                addToFavoriteTextview.setTextColor(addToFavorite.context.getColor(R.color.default_text_color))
-//                addToFavoriteTextview.text = "В избранное"
-//            }
-//        }
-//    }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
