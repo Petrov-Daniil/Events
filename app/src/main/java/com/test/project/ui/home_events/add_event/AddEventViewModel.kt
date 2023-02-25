@@ -26,5 +26,32 @@ class AddEventViewModel(
 
     private val _error = MutableStateFlow<NetworkErrors?>(null)
 
+    init {
+        getEvents()
+    }
 
+    fun getEvents() {
+        viewModelScope.launch {
+            when (val result = eventRepo.getEvents()) {
+                is RequestResult.Success -> {
+                    eventList.clear()
+                    eventList.addAll(result.data)
+                    _eventState.emit(result.data)
+                }
+
+                is RequestResult.Error -> {
+                    getEventsFromDatabase()
+                    _error.emit(result.exception)
+                }
+            }
+        }
+    }
+
+     fun getEventsFromDatabase() {
+        viewModelScope.launch {
+            eventList.clear()
+            eventList.addAll(eventRepo.getEventsFromDatabase())
+            _eventState.emit(eventRepo.getEventsFromDatabase())
+        }
+    }
 }

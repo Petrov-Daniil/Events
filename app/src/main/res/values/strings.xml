@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">СибГУТИ</string>
     <string name="dialogbutton">Отобразить диалог</string>
-    <string name="hello_world">Hello, World!</string>
     <string name="profile">Профиль</string>
     <string name="home">Новости</string>
     <string name="display_name">Name</string>

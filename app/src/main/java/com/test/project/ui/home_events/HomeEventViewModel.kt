@@ -37,10 +37,10 @@ class HomeEventViewModel(
             when (val result = eventRepo.getEvents()) {
                 is RequestResult.Success -> {
                     eventList.clear()
+                    println("model ${result.data}")
                     eventList.addAll(result.data)
                     _eventState.emit(result.data)
                 }
-
                 is RequestResult.Error -> {
                     getEventsFromDatabase()
                     _error.emit(result.exception)
@@ -55,7 +55,7 @@ class HomeEventViewModel(
         }
     }
 
-    private fun getEventsFromDatabase() {
+     fun getEventsFromDatabase() {
         viewModelScope.launch {
             eventList.clear()
             eventList.addAll(eventRepo.getEventsFromDatabase())

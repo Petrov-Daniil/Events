@@ -32,49 +32,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imageview_author_avatar"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/border_for_avatar"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textview_item_author"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/author"
-                android:textColor="@color/navy_blue"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/imageview_author_avatar"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <TextView
                 android:id="@+id/textview_item_date"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:text="@string/date"
-                app:layout_constraintStart_toEndOf="@+id/imageview_author_avatar"
-                app:layout_constraintTop_toBottomOf="@+id/textview_item_author" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/textview_item_description"
+                app:layout_constraintTop_toBottomOf="@+id/textview_item_title" />
 
             <TextView
                 android:id="@+id/textview_item_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:gravity="center"
                 android:text="@string/name"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="@+id/textview_item_date"
-                app:layout_constraintHorizontal_bias="0.666"
-                app:layout_constraintTop_toBottomOf="@+id/imageview_author_avatar" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintHorizontal_bias="0.666" />
 
             <TextView
                 android:id="@+id/textview_item_description"
@@ -85,10 +67,9 @@
                 android:layout_marginEnd="16dp"
                 android:scrollbars="vertical"
                 android:text="@string/description"
-                app:layout_constraintEnd_toEndOf="@+id/textview_item_title"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textview_item_title" />
+                app:layout_constraintTop_toBottomOf="@+id/textview_item_date" />
 
             <ImageView
                 android:id="@+id/imageview_item_image"

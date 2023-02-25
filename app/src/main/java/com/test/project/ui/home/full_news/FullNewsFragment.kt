@@ -60,14 +60,10 @@ class FullNewsFragment : Fragment(R.layout.full_news_fragment) {
             with(news) {
                 textviewItemTitle.text = title
                 textviewItemTitle.typeface = android.graphics.Typeface.DEFAULT_BOLD
-                textviewItemAuthor.text = author?.fullName ?: ""
                 textviewItemDate.text = dateTime
                 textviewItemDescription.text = description
                 textviewItemDescription.movementMethod = ScrollingMovementMethod()
                 imageviewItemImage.load(imageUrl)
-                imageviewAuthorAvatar.load(author?.avatarUrl) {
-                    transformations(CircleCropTransformation())
-                }
             }
             with(recyclerviewFullNews) {
                 adapter = adapterFullNewsList

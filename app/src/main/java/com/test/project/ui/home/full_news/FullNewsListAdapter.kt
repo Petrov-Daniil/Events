@@ -35,7 +35,6 @@ class FullNewsListAdapter :
             with(binding) {
                 textviewItemTitle.text = data.title
                 textviewItemTitle.typeface = Typeface.DEFAULT_BOLD
-                textviewItemAuthor.text = data.author?.fullName ?: ""
                 textviewItemDate.text = data.dateTime
             }
             itemView.setOnClickListener {
