@@ -18,7 +18,7 @@ abstract class EventDatabase : RoomDatabase() {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context,
-                    EventDatabase::class.java, "events_hash"
+                    EventDatabase::class.java, "events"
                 ).build()
                 INSTANCE = instance
                 instance

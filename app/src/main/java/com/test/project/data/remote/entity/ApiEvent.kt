@@ -19,22 +19,26 @@ data class ApiEvent(
     val description: String?,
     @Json(name = "imageUrl")
     val imageUrl: String?,
+    @Json(name = "firebaseId")
+    val firebaseId: String?,
 )
 
 fun ApiEvent.toEvents() = Event(
-    id = this.id?: -1,
-    title = this.title?: "",
-    date = this.date?: "",
-    place = this.place?: "",
-    description = this.description?: "",
-    imageUrl = this.imageUrl?: ""
+    id = this.id ?: -1,
+    title = this.title ?: "",
+    date = this.date ?: "",
+    place = this.place ?: "",
+    description = this.description ?: "",
+    imageUrl = this.imageUrl ?: "",
+    firebaseId = this.firebaseId ?: "",
 )
 
 fun ApiEvent.toApiEventsDatabase() = ApiEventDatabase(
-    id = this.id?: -1,
-    title = this.title?: "",
-    date = this.date?: "",
-    place = this.place?: "",
-    description = this.description?: "",
-    imageUrl = this.imageUrl?: ""
+    id = this.id ?: -1,
+    title = this.title ?: "",
+    date = this.date ?: "",
+    place = this.place ?: "",
+    description = this.description ?: "",
+    imageUrl = this.imageUrl ?: "",
+    firebaseId = this.firebaseId ?: "",
 )

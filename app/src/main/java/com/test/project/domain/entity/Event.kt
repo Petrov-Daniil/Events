@@ -2,7 +2,6 @@ package com.test.project.domain.entity
 
 import com.test.project.data.remote.entity.ApiEventDatabase
 
-
 data class Event(
     val id: Int,
     val title: String,
@@ -10,6 +9,7 @@ data class Event(
     val place: String,
     val description: String,
     val imageUrl: String,
+    val firebaseId: String,
 )
 
 fun Event.toApiEventsDatabase() = ApiEventDatabase(
@@ -18,5 +18,6 @@ fun Event.toApiEventsDatabase() = ApiEventDatabase(
     date = this.date ?: "",
     place = this.place ?: "",
     description = this.description ?: "",
-    imageUrl = this.imageUrl ?: ""
+    imageUrl = this.imageUrl ?: "",
+    firebaseId = this.firebaseId ?: ""
 )

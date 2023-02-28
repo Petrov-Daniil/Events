@@ -1,7 +1,6 @@
 package com.test.project.data.repo
 
 import com.google.firebase.database.*
-import com.test.project.data.dataSource.SibgutiHerokuRemoteDataSource
 import com.test.project.domain.RequestResult
 import com.test.project.domain.entity.Event
 import com.test.project.domain.repo.IEventRepo
@@ -13,7 +12,6 @@ import com.test.project.domain.entity.toApiEventsDatabase
 
 
 class EventRepo(
-    private val dataSource: SibgutiHerokuRemoteDataSource,
     private val database: EventDatabase
 ) : IEventRepo {
     private val dataBase: DatabaseReference = FirebaseDatabase.getInstance().getReference("events")
@@ -29,19 +27,23 @@ class EventRepo(
         dataBase.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
+                    var indexCounter = 0
                     eventsList.clear()
                     for (child in snapshot.children) {
-                        val id = child.child("id").value.toString()
+                        val id = indexCounter
                         val title = child.child("title").value.toString()
                         val date = child.child("date").value.toString()
                         val place = child.child("place").value.toString()
                         val description = child.child("description").value.toString()
                         val imageUrl = child.child("imageUrl").value.toString()
-                        val newEvent = Event(id.toInt(), title, date, place, description, imageUrl)
+                        val firebaseId = child.key.toString()
+                        val newEvent =
+                            Event(id, title, date, place, description, imageUrl, firebaseId)
+                        indexCounter += 1
                         eventsList.add(newEvent)
                     }
                 }
-                println(eventsList)
+                println("firebaseDB: $eventsList")
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -67,25 +69,6 @@ class EventRepo(
                 )
             )
         )
-//        return when (val result = dataSource.getEvents()) {
-//
-//            is RequestResult.Success -> {
-//                database.eventsDao().deleteAll()
-//                RequestResult.Success(
-//                    result.data.map {
-
-//                        it.toEvents()
-//                    }
-//                )
-//            }
-//
-//            is RequestResult.Error -> {
-//                RequestResult.Error(
-//                    result.exception
-//                )
-//            }
-//        }
-//        return RequestResult<result>
     }
 
     override suspend fun getEventsFromDatabase(): List<Event> {

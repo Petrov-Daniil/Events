@@ -32,16 +32,6 @@ class AddEventFragment : Fragment(R.layout.add_event_fragment) {
     }
 
     private fun bindUi() {
-        dataBase.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    count = snapshot.childrenCount.toInt()
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-            }
-        })
         with(viewBinding) {
             toolBar.inflateMenu(R.menu.add_event_menu)
             toolBar.setNavigationOnClickListener {
@@ -54,14 +44,16 @@ class AddEventFragment : Fragment(R.layout.add_event_fragment) {
             val imageUrl = textInputEdittextImage.text
             buttonAddEvent.setOnClickListener {
                 val newEvent = Event(
-                    count + 1,
+                    0,
                     title.toString(),
                     date.toString(),
                     place.toString(),
                     description.toString(),
-                    imageUrl.toString()
+                    imageUrl.toString(),
+                    "",
                 )
                 dataBase.push().setValue(newEvent)
+                findNavController().navigateUp()
                 Toast.makeText(
                     requireContext(),
                     "Мероприятие добавлено",

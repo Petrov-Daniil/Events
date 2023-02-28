@@ -12,6 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import coil.load
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.test.project.R
 import com.test.project.databinding.FullEventFragmentBinding
 import com.test.project.domain.entity.Event
@@ -24,6 +26,7 @@ class FullEventFragment : Fragment(R.layout.full_event_fragment) {
     private val binding: FullEventFragmentBinding by viewBinding()
     private val model: HomeEventViewModel by viewModel()
     private val adapterEventList: FullEventListAdapter = FullEventListAdapter()
+    private val dataBase: DatabaseReference = FirebaseDatabase.getInstance().getReference("events")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -59,11 +62,22 @@ class FullEventFragment : Fragment(R.layout.full_event_fragment) {
                                 .setMessage("Удалить мероприятие?")
                                 .setPositiveButton("Удалить") { _, _ ->
                                     model.delete(event.id)
-                                    Toast.makeText(
-                                        requireContext(),
-                                        "Мероприятие удалено",
-                                        Toast.LENGTH_LONG
-                                    ).show()
+                                    val dbEvent = dataBase.child(event.firebaseId)
+                                    val deleteEvent = dbEvent.removeValue()
+                                    findNavController().navigateUp()
+                                    deleteEvent.addOnSuccessListener {
+                                        Toast.makeText(
+                                            requireContext(),
+                                            "Мероприятие удалено",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                    }.addOnFailureListener {
+                                        Toast.makeText(
+                                            requireContext(),
+                                            "Мероприятие не удалено, ошибка: $it",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                    }
                                 }
                                 .setNegativeButton("Отменить", null)
                                 .create()

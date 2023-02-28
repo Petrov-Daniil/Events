@@ -82,7 +82,7 @@ class HomeEventViewModel(
     fun delete(id: Int) {
         viewModelScope.launch {
             eventRepo.deleteFromDatabase(id)
-            println(eventRepo.getEventsFromDatabase())
+            println("new db local ${eventRepo.getEventsFromDatabase()}")
         }
     }
 }

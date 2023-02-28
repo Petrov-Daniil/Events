@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import com.test.project.domain.entity.Event
 
 
-@Entity(tableName = "events_hash")
+@Entity(tableName = "events")
 data class ApiEventDatabase(
     @PrimaryKey
     @ColumnInfo
@@ -21,6 +21,8 @@ data class ApiEventDatabase(
     val description: String?,
     @ColumnInfo
     val imageUrl: String?,
+    @ColumnInfo
+    val firebaseId: String?,
 )
 
 fun ApiEventDatabase.toEvents() = Event(
@@ -30,4 +32,5 @@ fun ApiEventDatabase.toEvents() = Event(
     place = this.place ?: "",
     description = this.description ?: "",
     imageUrl = this.imageUrl ?: "",
+    firebaseId = this.firebaseId ?: "",
 )

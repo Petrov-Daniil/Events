@@ -40,7 +40,7 @@ val remoteModule = module {
 val repositoryModule = module {
     single<IProfileRepo> { ProfileRepo(get()) }
     single<INewsRepo> { NewsRepo(get(), get()) }
-    single<IEventRepo> { EventRepo(get(), get()) }
+    single<IEventRepo> { EventRepo(get()) }
 }
 
 val viewModelModules = module {

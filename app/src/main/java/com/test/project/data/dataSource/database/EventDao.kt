@@ -15,7 +15,7 @@ interface EventDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(apiEventDatabase: ApiEventDatabase)
 
-    @Query("DELETE FROM events_hash")
+    @Query("DELETE FROM events")
     suspend fun deleteAll()
 
     @Query("DELETE FROM favorite_events WHERE id = :id")
@@ -27,12 +27,12 @@ interface EventDao {
     @Query("SELECT * FROM favorite_events")
     suspend fun getAllFromFavorite(): List<FavoriteEvent>
 
-    @Query("SELECT * FROM events_hash")
+    @Query("SELECT * FROM events")
     suspend fun getAll(): List<ApiEventDatabase>
 
-    @Query("SELECT COUNT(*) FROM events_hash")
+    @Query("SELECT COUNT(*) FROM events")
     suspend fun getSizeOfDatabase(): Int
 
-    @Query("DELETE FROM events_hash WHERE id = :id")
+    @Query("DELETE FROM events WHERE id = :id")
     suspend fun deleteFromDatabase(id: Int)
 }
