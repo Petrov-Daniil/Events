@@ -6,12 +6,16 @@
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/drawable/ic_back.xml" value="0.223" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/drawable/ic_baseline_add_circle.xml" value="0.1465" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/drawable/ic_baseline_close.xml" value="0.1465" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/drawable/ic_baseline_favourite_selected.xml" value="0.1465" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/drawable/ic_calendar_month.xml" value="0.2085" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/drawable/ic_event.xml" value="0.223" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/drawable/ic_favorite.xml" value="0.2085" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/drawable/ic_favourite.xml" value="0.223" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/drawable/ic_notification.xml" value="0.1465" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/drawable/ic_notifications_active.xml" value="0.1465" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/drawable/ic_search.xml" value="0.2085" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/drawable/ic_splashscreen_centered.xml" value="0.3065" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/drawable/selector_notification_button.xml" value="0.1465" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/drawable/sl_favorite.xml" value="0.223" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/drawable/sl_favourite.xml" value="0.223" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/layout/activity_navigation.xml" value="0.20863616930312098" />
@@ -21,8 +25,10 @@
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/layout/friend_page_fragment.xml" value="0.1" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/layout/full_event_fragment.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/layout/full_news_fragment.xml" value="0.4" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/layout/home_event_fragment.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/layout/home_events_fragment.xml" value="0.264" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/layout/home_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/layout/item_event_list.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/layout/item_events_list.xml" value="0.2" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/layout/item_full_news_list.xml" value="0.264" />
         <entry key="..\:/Users/Daniil/AndroidStudioProjects/Events/app/src/main/res/layout/item_home_event_list.xml" value="0.1" />

@@ -49,12 +49,6 @@ class FullEventFragment : Fragment(R.layout.full_event_fragment) {
         }
     }
 
-    fun checkIfFragmentAttached(operation: Context.() -> Unit) {
-        if (isAdded && context != null) {
-            operation(requireContext())
-        }
-    }
-
     private fun bindUi(event: Event) {
         with(binding) {
             with(event) {
@@ -65,32 +59,30 @@ class FullEventFragment : Fragment(R.layout.full_event_fragment) {
                 toolBar.setOnMenuItemClickListener { item ->
                     when (item.itemId) {
                         R.id.delete_event -> {
-                            checkIfFragmentAttached {
-                                AlertDialog.Builder(requireContext())
-                                    .setMessage("Удалить мероприятие?")
-                                    .setPositiveButton("Удалить") { _, _ ->
-                                        model.delete(event.id)
-                                        val dbEvent = dataBase.child(event.firebaseId)
-                                        val deleteEvent = dbEvent.removeValue()
+                            AlertDialog.Builder(requireContext())
+                                .setMessage("Удалить мероприятие?")
+                                .setPositiveButton("Удалить") { _, _ ->
+                                    model.delete(event.id)
+                                    val dbEvent = dataBase.child(event.firebaseId)
+                                    val deleteEvent = dbEvent.removeValue()
+                                    deleteEvent.addOnSuccessListener {
                                         findNavController().navigateUp()
-                                        deleteEvent.addOnSuccessListener {
-                                            Toast.makeText(
-                                                requireContext(),
-                                                "Мероприятие удалено",
-                                                Toast.LENGTH_LONG
-                                            ).show()
-                                        }.addOnFailureListener {
-                                            Toast.makeText(
-                                                requireContext(),
-                                                "Мероприятие не удалено, ошибка: $it",
-                                                Toast.LENGTH_LONG
-                                            ).show()
-                                        }
+                                        Toast.makeText(
+                                            requireContext(),
+                                            "Мероприятие удалено",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                    }.addOnFailureListener {
+                                        Toast.makeText(
+                                            requireContext(),
+                                            "Мероприятие не удалено, ошибка: $it",
+                                            Toast.LENGTH_LONG
+                                        ).show()
                                     }
-                                    .setNegativeButton("Отменить", null)
-                                    .create()
-                                    .show()
-                            }
+                                }
+                                .setNegativeButton("Отменить", null)
+                                .create()
+                                .show()
                             true
                         }
                         else -> false

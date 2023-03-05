@@ -70,7 +70,6 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
             auth = FirebaseAuth.getInstance()
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 auth.signInWithEmailAndPassword(email, password)
-//                    auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener {
                         handleAuthResult(it)
                     }
@@ -94,7 +93,6 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
             .addOnCompleteListener {
                 handleAuthResult(it)
             }
-        println(123)
     }
 
     private fun signInWithGoogle() {
@@ -120,7 +118,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
                 register()
             }
             stateListAnimator = null
-            setBackgroundColor(requireContext().getColor(R.color.white))
+//            setBackgroundColor(requireContext().getColor(R.color.white))
         }
     }
 
