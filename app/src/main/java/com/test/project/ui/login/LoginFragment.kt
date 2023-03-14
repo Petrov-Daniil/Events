@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.test.project.R
 import com.test.project.databinding.LoginFragmentBinding
+import com.test.project.utils.SharedPreferences
 
 class LoginFragment : Fragment(R.layout.login_fragment) {
 
@@ -65,8 +66,10 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
 
     private fun login() {
         with(binding) {
-            val email = textinputedittextLogin.text.toString()
-            val password = textinputedittextPassword.text.toString()
+//            val email = textinputedittextLogin.text.toString()
+//            val password = textinputedittextPassword.text.toString()
+            val email = "asd@mail.ru"
+            val password = "qweasd"
             auth = FirebaseAuth.getInstance()
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 auth.signInWithEmailAndPassword(email, password)
@@ -104,6 +107,8 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
     private fun handleAuthResult(result: Task<AuthResult>) {
         with(binding) {
             if (result.isSuccessful) {
+                SharedPreferences(requireContext()).saveUserId(result.result.user?.email.toString())
+                println(SharedPreferences(requireContext()).restoreUserId())
                 textinputlayoutPassword.error = ""
                 findNavController().navigate(
                     R.id.action_loginFragment_to_homeFragment

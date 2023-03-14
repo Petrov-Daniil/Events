@@ -1,5 +1,8 @@
 package com.test.project.ui.home_events
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.*
 import android.viewbinding.library.fragment.viewBinding
@@ -88,6 +91,43 @@ class HomeEventFragment : Fragment(R.layout.home_event_fragment) {
                             R.id.action_homeEventsFragment_to_fullEventFragment,
                             bundle
                         )
+                    }
+
+                    override fun onNotificationButtonClick(flag: Boolean) {
+                        // Create a Calendar object to get the current date and time
+                        val calendar = Calendar.getInstance()
+
+// Create a DatePickerDialog instance with the current date as the default date
+                        val datePickerDialog = DatePickerDialog(
+                            requireContext(),
+                            { _, year, month, dayOfMonth ->
+                                // Do something with the selected date
+                                val selectedDate = "$year-${month + 1}-$dayOfMonth"
+
+                                // Create a TimePickerDialog instance with the current time as the default time
+                                val timePickerDialog = TimePickerDialog(
+                                    requireContext(),
+                                    { _, hourOfDay, minute ->
+                                        // Do something with the selected date and time
+                                        val selectedTime = "$hourOfDay:$minute"
+                                        // You can display the selected date and time in a TextView or pass them to another function
+                                        val selectedDateTime = "$selectedDate $selectedTime"
+                                    },
+                                    calendar.get(Calendar.HOUR_OF_DAY),
+                                    calendar.get(Calendar.MINUTE),
+                                    true // Set to true for 24-hour format
+                                )
+                                // Show the time picker dialog
+                                timePickerDialog.show()
+                            },
+                            calendar.get(Calendar.YEAR),
+                            calendar.get(Calendar.MONTH),
+                            calendar.get(Calendar.DAY_OF_MONTH)
+                        )
+
+// Show the date picker dialog
+                        datePickerDialog.show()
+
                     }
 
                     override fun onAddToFavoriteButtonClick(id: Int) {

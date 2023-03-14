@@ -1,6 +1,8 @@
 package com.test.project.ui.home_events
 
+import android.app.DatePickerDialog
 import android.graphics.Typeface
+import android.icu.util.Calendar
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -18,6 +20,7 @@ class HomeEventListAdapter :
     interface OnItemClickListener {
         fun onItemClick(position: Int)
         fun onAddToFavoriteButtonClick(id: Int)
+        fun onNotificationButtonClick(flag: Boolean)
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
@@ -54,6 +57,12 @@ class HomeEventListAdapter :
                 textviewItemDate.text = data.date
             }
             itemView.setOnClickListener { listener.onItemClick(adapterPosition) }
+            binding.imageButtonNotification.setOnCheckedChangeListener { checkBox, isChecked ->
+                checkBox.isChecked = isChecked
+                checkBox.setOnClickListener {
+                    listener.onNotificationButtonClick(isChecked)
+                }
+            }
         }
     }
 
