@@ -19,8 +19,7 @@ class HomeEventListAdapter :
 
     interface OnItemClickListener {
         fun onItemClick(position: Int)
-        fun onAddToFavoriteButtonClick(id: Int)
-        fun onNotificationButtonClick(flag: Boolean)
+        fun onNotificationButtonClick(id: Int)
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
@@ -55,12 +54,16 @@ class HomeEventListAdapter :
                 textviewItemTitle.text = data.title
                 textviewItemTitle.typeface = Typeface.DEFAULT_BOLD
                 textviewItemDate.text = data.date
+                if (favoriteEvent.contains(data.id)) {
+                    imageButtonNotification.isChecked = true
+                }
             }
             itemView.setOnClickListener { listener.onItemClick(adapterPosition) }
             binding.imageButtonNotification.setOnCheckedChangeListener { checkBox, isChecked ->
                 checkBox.isChecked = isChecked
                 checkBox.setOnClickListener {
-                    listener.onNotificationButtonClick(isChecked)
+                    println("adapter asd")
+                    listener.onNotificationButtonClick(data.id)
                 }
             }
         }
@@ -82,4 +85,5 @@ class HomeEventListAdapter :
 
     override fun getItemCount() = dataList.size
 
+    fun getItem(position: Int) = dataList[position]
 }

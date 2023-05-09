@@ -17,25 +17,16 @@
                             <option name="y" value="-666" />
                           </Point>
                         </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_addEventFragment_self">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="friendPageFragment">
+                  <entry key="addProfileFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="500" />
-                            <option name="y" value="12" />
+                            <option name="x" value="576" />
+                            <option name="y" value="-330" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -162,7 +153,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_profileFragment_to_friendPageFragment">
+                            <entry key="action_profileFragment_to_addProfileFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

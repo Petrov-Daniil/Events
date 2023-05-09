@@ -1,12 +1,17 @@
 package com.test.project.ui.home_events
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
+import android.app.*
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.*
 import android.viewbinding.library.fragment.viewBinding
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.get
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -17,7 +22,16 @@ import com.test.project.data.remote.entity.FavoriteEvent
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 import com.test.project.databinding.HomeEventFragmentBinding
+import com.test.project.utils.*
+import com.test.project.utils.Notification
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class HomeEventFragment : Fragment(R.layout.home_event_fragment) {
@@ -28,6 +42,7 @@ class HomeEventFragment : Fragment(R.layout.home_event_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        createNotificationChannel()
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
@@ -93,44 +108,9 @@ class HomeEventFragment : Fragment(R.layout.home_event_fragment) {
                         )
                     }
 
-                    override fun onNotificationButtonClick(flag: Boolean) {
-                        // Create a Calendar object to get the current date and time
-                        val calendar = Calendar.getInstance()
-
-// Create a DatePickerDialog instance with the current date as the default date
-                        val datePickerDialog = DatePickerDialog(
-                            requireContext(),
-                            { _, year, month, dayOfMonth ->
-                                // Do something with the selected date
-                                val selectedDate = "$year-${month + 1}-$dayOfMonth"
-
-                                // Create a TimePickerDialog instance with the current time as the default time
-                                val timePickerDialog = TimePickerDialog(
-                                    requireContext(),
-                                    { _, hourOfDay, minute ->
-                                        // Do something with the selected date and time
-                                        val selectedTime = "$hourOfDay:$minute"
-                                        // You can display the selected date and time in a TextView or pass them to another function
-                                        val selectedDateTime = "$selectedDate $selectedTime"
-                                    },
-                                    calendar.get(Calendar.HOUR_OF_DAY),
-                                    calendar.get(Calendar.MINUTE),
-                                    true // Set to true for 24-hour format
-                                )
-                                // Show the time picker dialog
-                                timePickerDialog.show()
-                            },
-                            calendar.get(Calendar.YEAR),
-                            calendar.get(Calendar.MONTH),
-                            calendar.get(Calendar.DAY_OF_MONTH)
-                        )
-
-// Show the date picker dialog
-                        datePickerDialog.show()
-
-                    }
-
-                    override fun onAddToFavoriteButtonClick(id: Int) {
+                    override fun onNotificationButtonClick(id: Int) {
+                        val eventMessage = "Скоро начнется мероприятие, проверь приложение!"
+                        eventNotification(adapterEvent.getItem(id).title, eventMessage)
                         val idIsContains = adapterEvent.favoriteEvent.contains(id)
                         val favoriteEvent = FavoriteEvent(id)
                         if (!idIsContains) {
@@ -147,5 +127,84 @@ class HomeEventFragment : Fragment(R.layout.home_event_fragment) {
                 swipeRefreshHomeEvents.isRefreshing = false
             }
         }
+    }
+
+    private fun eventNotification(eventTitle: String, eventMessage: String) {
+        val intent = Intent(requireContext().applicationContext, Notification::class.java)
+        intent.putExtra(titleExtra, eventTitle)
+        intent.putExtra(messageExtra, eventMessage)
+        val pendingIntent = PendingIntent.getBroadcast(
+            requireContext().applicationContext,
+            notificationID,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+        val alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        getTime { selectedDateTime ->
+            val millis =
+                selectedDateTime.atZone(ZoneId.systemDefault())?.toInstant()
+                    ?.toEpochMilli()
+            if (millis != null) {
+                alarmManager.setExactAndAllowWhileIdle(
+                    AlarmManager.RTC_WAKEUP,
+                    millis,
+                    pendingIntent
+                )
+                showAlert(selectedDateTime, eventTitle)
+            }
+        }
+    }
+
+
+    @Suppress("SameParameterValue")
+    private fun showAlert(date: LocalDateTime, title: String) {
+        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")
+        val formattedDateTime = date.format(formatter)
+        AlertDialog.Builder(requireContext())
+            .setTitle("Напоминание")
+            .setMessage("$title\nна $formattedDateTime")
+            .setPositiveButton("Закрыть") { _, _ -> }
+            .show()
+    }
+
+    private fun getTime(callback: (LocalDateTime) -> Unit) {
+        val calendar = Calendar.getInstance()
+        val datePickerDialog = DatePickerDialog(
+            requireContext(),
+            { _, year, month, dayOfMonth ->
+                val selectedDate = LocalDate.of(year, month + 1, dayOfMonth)
+                val timePickerDialog = TimePickerDialog(
+                    requireContext(),
+                    { _, hourOfDay, minute ->
+                        val selectedDateTime =
+                            LocalDateTime.of(selectedDate, LocalTime.of(hourOfDay, minute))
+                        callback(selectedDateTime)
+                    },
+                    calendar.get(Calendar.HOUR_OF_DAY),
+                    calendar.get(Calendar.MINUTE),
+                    true
+                )
+                timePickerDialog.show()
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+        datePickerDialog.show()
+    }
+
+
+    private fun createNotificationChannel() {
+        val name = "Event Notification Channel"
+        val desc = "A Description of the Channel"
+        val channel = NotificationChannel(
+            channelID, name,
+            NotificationManager.IMPORTANCE_HIGH
+        ).apply {
+            description = desc
+        }
+        val notificationManager = requireContext().getSystemService(Context.NOTIFICATION_SERVICE)
+                as NotificationManager
+        notificationManager.createNotificationChannel(channel)
     }
 }

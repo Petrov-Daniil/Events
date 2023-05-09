@@ -40,7 +40,6 @@ class NavigationActivity : AppCompatActivity() {
             setOf(
                 R.id.homeFragment,
                 R.id.profileFragment,
-                R.id.scheduleFragment,
                 R.id.homeEventFragment
             )
         )
@@ -92,7 +91,6 @@ class NavigationActivity : AppCompatActivity() {
                     }
                     is HomeFragment,
                     is HomeEventFragment,
-                    is ScheduleFragment,
                     is ProfileFragment -> {
                         showAppBar()
                         showBottomNavigationMenu()

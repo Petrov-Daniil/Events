@@ -26,21 +26,6 @@ class ProfileViewModel(
 
     init {
         getProfileMy()
-        getFriends()
-    }
-
-    private fun getFriends() {
-        viewModelScope.launch {
-            when (val result = profileRepo.getFriends()) {
-                is RequestResult.Success -> {
-                    _friendListState.emit(result.data)
-                }
-
-                is RequestResult.Error -> {
-                    _error.emit(result.exception)
-                }
-            }
-        }
     }
 
     private fun getProfileMy() {

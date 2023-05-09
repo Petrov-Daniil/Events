@@ -19,7 +19,7 @@ interface NewsDao {
     suspend fun deleteFromFavoriteById(id: Int): Int
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun  insertIntoFavorite(favoriteNews: FavoriteNews)
+    suspend fun insertIntoFavorite(favoriteNews: FavoriteNews)
 
     @Query("SELECT * FROM favorite_news")
     suspend fun getAllFromFavorite(): List<FavoriteNews>

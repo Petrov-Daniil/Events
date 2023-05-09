@@ -42,11 +42,16 @@
         android:label="Профиль"
         tools:layout="@layout/profile_fragment">
         <action
-            android:id="@+id/action_profileFragment_to_friendPageFragment"
-            app:destination="@id/friendPageFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out" />
+            android:id="@+id/action_profileFragment_to_addProfileFragment"
+            app:destination="@+id/addProfileFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:popEnterAnim="@android:anim/slide_in_left" />
     </fragment>
+    <fragment
+        android:id="@+id/addProfileFragment"
+        android:name="com.test.project.ui.profile.add_profile.AddProfileFragment"
+        android:label="Профиль"
+        tools:layout="@layout/add_profile_fragment" />
     <fragment
         android:id="@+id/fullNewsFragment"
         android:name="com.test.project.ui.home.full_news.FullNewsFragment"
@@ -93,8 +98,4 @@
             app:popUpTo="@+id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
-    <fragment
-        android:id="@+id/friendPageFragment"
-        android:name="com.test.project.ui.friend_page.FriendPageFragment"
-        android:label="Профиль друга" />
 </navigation>

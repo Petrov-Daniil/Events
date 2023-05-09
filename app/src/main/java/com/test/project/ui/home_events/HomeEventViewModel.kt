@@ -52,6 +52,7 @@ class HomeEventViewModel(
     fun getFavoriteEventsFromDatabase() {
         viewModelScope.launch {
             _eventFavoriteState.value = eventRepo.getFavoriteEventsFromDatabase()
+            println(eventRepo.getFavoriteEventsFromDatabase())
         }
     }
 
