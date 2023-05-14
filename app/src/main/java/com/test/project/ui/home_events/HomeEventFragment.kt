@@ -11,7 +11,6 @@ import android.view.*
 import android.viewbinding.library.fragment.viewBinding
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
-import androidx.core.view.get
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -22,7 +21,6 @@ import com.test.project.data.remote.entity.FavoriteEvent
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import androidx.fragment.app.Fragment
-import androidx.viewbinding.ViewBinding
 import com.test.project.databinding.HomeEventFragmentBinding
 import com.test.project.utils.*
 import com.test.project.utils.Notification
@@ -56,9 +54,7 @@ class HomeEventFragment : Fragment(R.layout.home_event_fragment) {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         model.eventFavoriteStateFlow.observe(viewLifecycleOwner) { it ->
             adapterEvent.setUpdateFavoriteList(it.map { it.id })
@@ -109,11 +105,11 @@ class HomeEventFragment : Fragment(R.layout.home_event_fragment) {
                     }
 
                     override fun onNotificationButtonClick(id: Int) {
-                        val eventMessage = "Скоро начнется мероприятие, проверь приложение!"
-                        eventNotification(adapterEvent.getItem(id).title, eventMessage)
                         val idIsContains = adapterEvent.favoriteEvent.contains(id)
                         val favoriteEvent = FavoriteEvent(id)
                         if (!idIsContains) {
+                            val eventMessage = "Скоро начнется мероприятие, проверь приложение!"
+                            eventNotification(adapterEvent.getItem(id).title, eventMessage)
                             model.addToFavoriteEvent(favoriteEvent)
                         } else {
                             model.deleteFromFavoriteEvent(favoriteEvent)

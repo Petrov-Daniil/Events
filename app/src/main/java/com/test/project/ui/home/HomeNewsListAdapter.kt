@@ -40,6 +40,18 @@ class HomeNewsListAdapter :
         diffResult.dispatchUpdatesTo(this)
     }
 
+    fun setUpdateFavoriteData(dataList: List<News>) {
+        setUpdatedData(dataList)
+        val favoriteNewsList: MutableList<News> = mutableListOf()
+        for (data in dataList) {
+            if (favoriteNews.contains(data.id)){
+                favoriteNewsList.add(data)
+            }
+        }
+        this.dataList.clear()
+        this.dataList = favoriteNewsList
+    }
+
     fun setUpdateFavoriteList(list: List<Int>) {
         this.favoriteNews.clear()
         this.favoriteNews.addAll(list)

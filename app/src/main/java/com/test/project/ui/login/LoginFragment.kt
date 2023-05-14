@@ -123,7 +123,6 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
                 register()
             }
             stateListAnimator = null
-//            setBackgroundColor(requireContext().getColor(R.color.white))
         }
     }
 

@@ -11,7 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.test.project.R
 import com.test.project.data.remote.entity.FavoriteNews
 import com.test.project.databinding.HomeFragmentBinding
@@ -27,19 +26,32 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                launch {
-                    model.newsStateFlow.collect {
-                        adapterNews.setUpdatedData(it)
+        val favoriteFlag = arguments?.getString("flag") ?: "notfavorite"
+        if (favoriteFlag == "favorite") {
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    launch {
+                        model.newsStateFlow.collect {
+                            adapterNews.setUpdateFavoriteData(it)
+                        }
+                    }
+                }
+            }
+        } else {
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    launch {
+                        model.newsStateFlow.collect {
+                            adapterNews.setUpdatedData(it)
+                        }
                     }
                 }
             }
         }
         bindUi()
-        view.doOnPreDraw {
-            startPostponedEnterTransition()
-        }
+//        view.doOnPreDraw {
+//            startPostponedEnterTransition()
+//        }
     }
 
     override fun onCreateView(
